@@ -100,7 +100,24 @@ class LinkedList:
         temp.next = new_node
         self.length += 1
         return True
-    
+
+    def remove(self, index):
+        if index < 0 and index > self.length:
+            return None
+
+        if index == 0:
+            return self.pop_first()
+
+        if index == self.length:
+            return self.pop()
+
+        pre = self.get(index - 1)
+        temp = pre.next
+        pre.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
+
     def reverse(self):
         temp = self.head
         self.head = self.tail
@@ -113,14 +130,42 @@ class LinkedList:
             before = temp
             temp = after
 
+    def middle_node(self):
+        slow = self.head
+        fast = self.head
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+
+def find_kth_node_end(ll, k):
+    slow = fast = ll.head
+    for _ in range(k):
+        if fast is None:
+            return None
+        fast = fast.next
+    while fast:
+        slow = slow.next
+        fast = fast.next
+    return slow
+
+
+def find_kth_node_start(ll, k):
+    slow = ll.head
+    for _ in range(k - 1):
+        if slow is None:
+            return None
+        slow = slow.next
+    return slow
+
 
 my_linked_list = LinkedList(5)
 
 my_linked_list.append(2)
 my_linked_list.append(8)
 my_linked_list.append(3)
-my_linked_list.set_value(1, 2)
-# my_linked_list.prepend(12)
-
-
+my_linked_list.append(5)
+# my_linked_list.print_list()
+my_linked_list.remove(4)
 my_linked_list.print_list()
