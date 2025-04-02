@@ -22,6 +22,6 @@ def quick_sort(my_list, left, right):
     return my_list
 
 
-my_list = [4, 6, 1, 7, 3, 2, 5]
-print(quick_sort(my_list, 0, 6))
+my_list = [12, 11, 15, 10, 9, 1, 2, 3, 13, 14, 4, 5, 6, 7, 8]
+print(quick_sort(my_list, 0, 14))
 
