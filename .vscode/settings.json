@@ -1,4 +1,4 @@
 {
-  "cSpell.words": ["bubblesort", "insertionsort", "selectionsort"],
+  "cSpell.words": ["bubblesort", "insertionsort", "nlogn", "selectionsort"],
   "python.REPL.enableREPLSmartSend": false
 }

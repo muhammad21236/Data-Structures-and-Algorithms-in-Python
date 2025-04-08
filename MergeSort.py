@@ -24,10 +24,12 @@ def merge_sort(my_list):
     min_index = int(len(my_list) / 2)
     left = merge_sort(my_list[:min_index])
     right = merge_sort(my_list[min_index:])
-    
+
     return merge(left, right)
 
-original_sort = [3,7,2,9]
+# O(nlogn)
+
+original_sort = [3, 7, 2, 9]
 
 sorted_list = merge_sort(original_sort)
 
