@@ -188,6 +188,19 @@ class BST:
             return path
         return None
 
+    def find_path_iterative(self, target):
+        stack = [(self.root, [])]
+        while stack:
+            node, path = stack.pop()
+            if node is None:
+                continue
+            path.append(node.value)
+            if node.value == target:
+                return path
+            stack.append((node.right, path.copy()))
+            stack.append((node.left, path.copy()))
+        return None
+
 
 # Example usage
 my_tree = BST()
@@ -205,4 +218,4 @@ my_tree.r_delete(47)
 
 print(my_tree.is_valid_bst())
 
-print(my_tree.BFS()) 
+print(my_tree.BFS())
