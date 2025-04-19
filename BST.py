@@ -205,4 +205,4 @@ my_tree.r_delete(47)
 
 print(my_tree.is_valid_bst())
 
-print(my_tree.BFS()) # Output: [47, 21, 32]
+print(my_tree.BFS()) 

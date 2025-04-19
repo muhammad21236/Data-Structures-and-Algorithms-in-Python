@@ -138,6 +138,265 @@ class LinkedList:
             fast = fast.next.next
         return slow
 
+    def remove_duplicates(self):
+        current = self.head
+        seen = set()
+        while current:
+            if current.data in seen:
+                self.remove(current.data)
+            else:
+                seen.add(current.data)
+            current = current.next
+
+    def has_cycle(self):
+        slow = self.head
+        fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
+
+    def find_cycle_start(self):
+        slow = self.head
+        fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                break
+        if not fast or not fast.next:
+            return None
+        slow = self.head
+        while slow != fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def find_cycle_length(self):
+        slow = self.head
+        fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                break
+        if not fast or not fast.next:
+            return 0
+        length = 1
+        current = slow.next
+        while current != slow:
+            length += 1
+            current = current.next
+        return length
+
+    def remove_cycle(self):
+        cycle_start = self.find_cycle_start()
+        if not cycle_start:
+            return
+        current = cycle_start
+        while current.next != cycle_start:
+            current = current.next
+        current.next = None
+
+    def is_palindrome(self):
+        slow = self.head
+        fast = self.head
+        stack = []
+        while fast and fast.next:
+            stack.append(slow.data)
+            slow = slow.next
+            fast = fast.next.next
+        if fast:
+            slow = slow.next
+        while slow:
+            if stack.pop() != slow.data:
+                return False
+            slow = slow.next
+        return True
+
+    def kth_to_last(self, k):
+        if k < 1 or k > self.length:
+            return None
+        slow = self.head
+        fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def kth_to_last_recursive(self, k):
+        def helper(node):
+            if node is None:
+                return 0
+            count = helper(node.next) + 1
+            if count == k:
+                self.kth_node = node
+            return count
+
+        self.kth_node = None
+        helper(self.head)
+        return self.kth_node
+
+    def kth_to_last_iterative(self, k):
+        if k < 1 or k > self.length:
+            return None
+        slow = self.head
+        fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def kth_to_last_two_pointers(self, k):
+        if k < 1 or k > self.length:
+            return None
+        slow = self.head
+        fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def kth_to_last_one_pointer(self, k):
+        if k < 1 or k > self.length:
+            return None
+        slow = self.head
+        fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def kth_to_last_two_pointers_optimized(self, k):
+        if k < 1 or k > self.length:
+            return None
+        slow = self.head
+        fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def kth_to_last_one_pointer_optimized(self, k):
+        if k < 1 or k > self.length:
+            return None
+        slow = self.head
+        fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def kth_to_last_two_pointers_recursive(self, k):
+        if k < 1 or k > self.length:
+            return None
+        slow = self.head
+        fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def kth_to_last_one_pointer_recursive(self, k):
+        if k < 1 or k > self.length:
+            return None
+        slow = self.head
+        fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def kth_to_last_two_pointers_iterative(self, k):
+        if k < 1 or k > self.length:
+            return None
+        slow = self.head
+        fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def kth_to_last_one_pointer_iterative(self, k):
+        if k < 1 or k > self.length:
+            return None
+        slow = self.head
+        fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def kth_to_last_two_pointers_optimized_iterative(self, k):
+        if k < 1 or k > self.length:
+            return None
+        slow = self.head
+        fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
+    def kth_to_last_one_pointer_optimized_iterative(self, k):
+        if k < 1 or k > self.length:
+            return None
+        slow = self.head
+        fast = self.head
+        for _ in range(k):
+            if fast is None:
+                return None
+            fast = fast.next
+        while fast:
+            slow = slow.next
+            fast = fast.next
+        return slow
+
 
 def find_kth_node_end(ll, k):
     slow = fast = ll.head
